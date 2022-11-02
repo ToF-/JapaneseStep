@@ -28,16 +28,21 @@ test('un gauche peut sauter ou un gauche peut avancer') :-
     coups_possibles([g,g,s], [1,2]).
 
 test('droite peut avancer') :-
-    coups_possibles([s,d], [2]).
+    coups_possibles([s,d], [2]),
+    coups_possibles([s,d,g], [2]).
 
 test('droite peut sauter') :-
     coups_possibles([s,g,d], [3]).
 
 test('un droite peut sauter ou un droite peut avancer') :-
-    coups_possibles([s,d,d], [2,3]).
+    coups_possibles([s,d,d], [2,3]),
+    coups_possibles([s,d,d,d], [2,3]).
 test('avant dernier gauche peut sauter ou dernier gauche peut avancer') :-
     coups_possibles([g,g,g,g,s], R),
     R = [3,4].
+test('avant dernier droite peut sauter ou dernier droite peut avancer') :-
+    coups_possibles([g,g,s,d,d,d,d], R),
+    R = [1,2,4,5].
 :- end_tests(pas_japonais).
 
 
