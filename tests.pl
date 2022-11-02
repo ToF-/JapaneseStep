@@ -16,33 +16,24 @@ test('terrain avec 4 personnes de chaque') :-
     terrain(4,[g,g,g,g,s,d,d,d,d]).
 
 
-test('coups possibles sans personne') :-
-    coups_possibles([s], []).
-test('gauche peut avancer') :-
-    coups_possibles([g,s], [1]).
+test('apres un coup de gauche vers la droite, le gauche est à droite'):-
+    resultat([g,s], d1, [s,g]).
 
-test('gauche peut sauter') :-
-    coups_possibles([g,d,s], [1]).
+test('un pas vers la droite') :-
+    resultat([_,_,_,_,g,s,_,_], d1, [_,_,_,_,s,g,_,_]).
 
-test('un gauche peut sauter ou un gauche peut avancer') :-
-    coups_possibles([g,g,s], [1,2]).
+test('un pas vers la gauche') :-
+    resultat([_,_,_,s,d,_], g1, [_,_,_,d,s,_]).
 
-test('droite peut avancer') :-
-    coups_possibles([s,d], [2]),
-    coups_possibles([s,d,g], [2]).
+test('un saut vers la droite') :-
+    resultat([_,_,_,g,_,s,_,_], d2, [_,_,_,s,_,g,_,_]).
 
-test('droite peut sauter') :-
-    coups_possibles([s,g,d], [3]).
+test('un saut vers la gauche') :-
+    resultat([_,_,s,_,d,_,_,_], g2, [_,_,d,_,s,_,_,_]).
 
-test('un droite peut sauter ou un droite peut avancer') :-
-    coups_possibles([s,d,d], [2,3]),
-    coups_possibles([s,d,d,d], [2,3]).
-test('avant dernier gauche peut sauter ou dernier gauche peut avancer') :-
-    coups_possibles([g,g,g,g,s], R),
-    R = [3,4].
-test('avant dernier droite peut sauter ou dernier droite peut avancer') :-
-    coups_possibles([g,g,s,d,d,d,d], R),
-    R = [1,2,4,5].
+test('un coup gagnant') :-
+    resultat([g,s],Coup,[s,g]).
+
 :- end_tests(pas_japonais).
 
 
