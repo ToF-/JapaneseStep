@@ -17,22 +17,28 @@ test('terrain avec 4 personnes de chaque') :-
 
 
 test('apres un coup de gauche vers la droite, le gauche est à droite'):-
-    resultat([g,s], d1, [s,g]).
+    resultat([g,s], marcheDroite, [s,g]).
 
 test('un pas vers la droite') :-
-    resultat([_,_,_,_,g,s,_,_], d1, [_,_,_,_,s,g,_,_]).
+    resultat([_,_,_,_,g,s,_,_], marcheDroite, [_,_,_,_,s,g,_,_]).
 
 test('un pas vers la gauche') :-
-    resultat([_,_,_,s,d,_], g1, [_,_,_,d,s,_]).
+    resultat([_,_,_,s,d,_], marcheGauche, [_,_,_,d,s,_]).
 
 test('un saut vers la droite') :-
-    resultat([_,_,_,g,_,s,_,_], d2, [_,_,_,s,_,g,_,_]).
+    resultat([_,_,_,g,_,s,_,_], sauteDroite, [_,_,_,s,_,g,_,_]).
 
 test('un saut vers la gauche') :-
-    resultat([_,_,s,_,d,_,_,_], g2, [_,_,d,_,s,_,_,_]).
+    resultat([_,_,s,_,d,_,_,_], sauteGauche, [_,_,d,_,s,_,_,_]).
 
 test('un coup gagnant') :-
     resultat([g,s],Coup,[s,g]).
+
+test('un chemin gagnant a un coup') :-
+    chemin([g,s],Chemin,[s,g]).
+
+test('un chemin gagnant a deux coups') :-
+    chemin([g,s,d],Chemin,[d,g,s]).
 
 :- end_tests(pas_japonais).
 
