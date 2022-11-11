@@ -1,3 +1,4 @@
+% tests.pl
 % to run the tests:
 % swipl -g run_tests -t halt tests.pl
 
